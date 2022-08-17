@@ -1,0 +1,58 @@
+<section id="cadastro">
+    <h2 id="titulo">Cadastro de Consumidor</h2>
+    
+    <form id="form">
+        <div class="form-row">
+            <div class="form-field">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome">
+            </div>
+            <div class="form-field">
+                <label for="bairro">Bairro</label>
+                <input type="text" name="bairro">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-field">
+                <label for="interesses">Interesses</label>
+                <div style="width:100%; height: 41%; display:flex;">
+                    <select name="interesses">
+                    
+                    </select>
+                    <button>+</button>
+                </div>
+            </div>
+            <div class="form-field" id="text-field">
+                
+            </div>
+            <div class="button-field" id="text-field">
+                <input type="submit" value="Cadastrar">
+                <input type="button" value="Limpar">
+            </div>
+        </div>
+    </form>
+    
+    <div id="tableView">
+        <div id="listingFunctions">
+            <button class="iconButton"><mat-icon fontIcon="filter_alt"></mat-icon></button>
+            <button class="iconButton"><mat-icon fontIcon="sort_by_alpha"></mat-icon></button>
+        </div>
+        
+        <div id="table">
+            <div id="tableHeaderRow">
+                <div class="tableCell">Nome</div>
+                <div class="tableCell">Bairro</div>
+                <div class="tableCell">Interesses</div>
+                <div class="tableCellButton"></div>
+                <div class="tableCellButton"></div>
+            </div>
+            <div class="tableRow">
+                <div class="tableCell">Jorge</div>
+                <div class="tableCell">Bairro Tal</div>
+                <div class="tableCell">Tomate, cenoura</div>
+                <div class="tableCellButton"><button class="iconButton" ><mat-icon fontIcon="edit" style="font-size: 26px !important"></mat-icon></button></div>
+                <div class="tableCellButton"><button class="iconButton"><mat-icon fontIcon="delete" style="font-size: 26px !important"></mat-icon></button></div>
+            </div>
+        </div>
+    </div>
+</section>
