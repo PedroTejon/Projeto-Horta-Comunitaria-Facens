@@ -1,36 +1,39 @@
 <section id="cadastro">
-    <h2 id="titulo">Cadastro de Consumidor</h2>
+    <h2 id="titulo">Cadastro de Época de Colheita</h2>
     
     <form id="form" [formGroup]="formCadastro" (ngSubmit)="cadastrar()">
         <div class="form-row">
             <div class="form-field">
-                <label for="nome">Nome</label>
-                <input type="text" formControlName="nome" required>
+                <label for="data">Data</label>
+                <input type="date" formControlName="data">
             </div>
+            
+            
             <div class="form-field">
-                <label for="bairro">Bairro</label>
-                <input type="text" formControlName="bairro" required>
+                <label for="encarregado">Encarregado</label>
+                <input type="text" formControlName="encarregado">
             </div>
         </div>
         <div class="form-row">
             <div class="form-field">
-                <label for="interesses">Interesses</label>
+                <label for="plantas">Plantas</label>
                 <div style="width:100%; height: 41%; display:flex;">
-                    <input type="text" formControlName="interesses">
-                    <input type="button" (click)="insertInteresse()" value="+">
+                    <input type="text" formControlName="plantas">
+                    <input type="button" (click)="insertPlantas()" value="+">
                 </div>
             </div>
             <div class="form-field" >
                 <div id="text-field">
-                    <p style="height: 2vh; width: 11vw" *ngFor="let interesse of interesses">
-                        {{interesse}}
+                    <p style="height: 2vh; width: 11vw" *ngFor="let planta of plantas">
+                        {{planta}}
                     </p>
                 </div>
             </div>
+            
             <div class="button-field">
                 <input type="submit" value="Cadastrar">
                 
-            </div> 
+            </div>
         </div>
     </form>
     
@@ -42,21 +45,19 @@
         
         <div id="table">
             <div id="tableHeaderRow">
-                <div class="tableCell">Nome</div>
-                <div class="tableCell">Bairro</div>
-                <div class="tableCell">Interesses</div>
+                <div class="tableCell">Data</div>
+                <div class="tableCell">Plantas</div>
+                <div class="tableCell">Encarregado</div>
                 <div class="tableCellButton"></div>
                 <div class="tableCellButton"></div>
             </div>
-            
             <div *ngFor="let consumer of consumers" style="width: auto; height: 20%" class="tableRow">
-                <div class="tableCell">{{consumer.nome}}</div>
-                <div class="tableCell">{{consumer.bairro}}</div>
-                <div class="tableCell">{{consumer.interesses}}</div>
+                <div class="tableCell">{{consumer.data}}</div>
+                <div class="tableCell">{{consumer.plantas}}</div>
+                <div class="tableCell">{{consumer.encarregado}}</div>
                 <div class="tableCellButton"><button (click)="edit(consumer.id)" class="iconButton"><mat-icon fontIcon="edit" style="font-size: 26px !important"></mat-icon></button></div>
                 <div class="tableCellButton"><button (click)="delete(consumer.id)" class="iconButton"><mat-icon fontIcon="delete" style="font-size: 26px !important"></mat-icon></button></div>
             </div>
-
         </div>
     </div>
 </section>

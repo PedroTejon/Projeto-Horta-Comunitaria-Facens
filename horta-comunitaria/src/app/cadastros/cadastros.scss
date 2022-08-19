@@ -59,7 +59,7 @@
     border-bottom: 1px solid #BB86FC;
     border-radius: 5px;
     
-    &>input[type=text] {
+    &>input[type=text], input[type=date], input[type=time], input[name=interesses] {
         height: 41%;
         width: 95%;
         
@@ -74,7 +74,7 @@
         border: 0;
     }
     
-    &>div>select {
+    &>div>input[type=text] {
         height: 100%;
         width: 85%;
         
@@ -88,7 +88,29 @@
         border-radius: 5px;
         border: 0;
     }
-    &>div>button {
+    
+    &>input[type=time] {
+        width: 88%;
+        
+        text-align: center;
+    }
+    
+    &>div>select{
+        width: 95%;
+        height: 100%;
+
+        padding-left: 1%;
+        
+        color: white;
+        font-size: 14px;
+        
+        background-color: #373737;
+        
+        border-radius: 5px;
+        border: 0;
+    }
+    
+    &>div>input[type=button] {
         height: 100%;
         width: 8%;
         
@@ -105,7 +127,10 @@
 }
 
 #text-field {
-    overflow-x: auto;
+    height: auto;
+    padding-top: 1vh;
+    
+    overflow: auto;
 }
 
 .button-field {
@@ -224,18 +249,22 @@
 
 .tableCell {
     width: 25%;
-    height: 85%;
+    height: 8vh;
     
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: end;
+    flex-grow: 1;
     
     padding-left: 1%;
     padding-bottom: 1%;
     
     color: white;
     font-size: 16px;
+    
+    white-space: nowrap;
+    overflow: auto;
 }
 
 .tableCellButton{

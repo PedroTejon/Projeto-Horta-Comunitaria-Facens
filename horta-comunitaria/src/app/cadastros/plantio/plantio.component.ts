@@ -2,13 +2,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { filter, map } from 'rxjs/operators';
 
-
 @Component({
-    selector: 'app-consumidor',
-    templateUrl: './consumidor.component.html',
+    selector: 'app-plantio',
+    templateUrl: './plantio.component.html',
     styleUrls: ['../cadastros.scss']
 })
-export class ConsumidorComponent implements OnInit {
+export class PlantioComponent implements OnInit {
+
 
     constructor(private formBuilder: FormBuilder) {
 
@@ -16,7 +16,7 @@ export class ConsumidorComponent implements OnInit {
 
     formCadastro!: FormGroup;
     consumers: any[] = [];
-    interesses: any[] = [];
+    plantas: any[] = [];
     editando = false;
     currId: any;
 
@@ -24,28 +24,30 @@ export class ConsumidorComponent implements OnInit {
         fetch("http://localhost:3000" + window.location.pathname)
             .then(response => response.json())
             .then((data) => { this.consumers = data });
-            
+
         this.inicializarFormulario()
     }
 
     edit(id: number) {
         let consumer = this.consumers.find(c => c.id == id);
-        
+
         this.formCadastro.patchValue({
-            nome: consumer.nome,
-            bairro: consumer.bairro
+            data: consumer.data,
+            encarregado: consumer.encarregado
         });
-        this.interesses = consumer.interesses.split(', ');
+        this.plantas = consumer.plantas.split(', ');
         this.editando = true;
         this.currId = id;
     }
 
-    cadastrar(){
+    cadastrar() {
         if (this.formCadastro.valid) {
             let dados = this.formCadastro.value;
-            dados.interesses = this.interesses.join(', ');
+            let dateF = this.formCadastro.value.data.split('-')
+            dados.data = dateF[2] + '/' + dateF[1] + '/' + dateF[0];
+            dados.plantas = this.plantas.join(', ');
 
-            if (this.editando){
+            if (this.editando) {
                 dados.id = this.currId;
                 fetch('http://localhost:3000' + window.location.pathname, {
                     method: 'PUT',
@@ -54,29 +56,31 @@ export class ConsumidorComponent implements OnInit {
                 })
                 this.editando = false;
                 this.consumers = this.consumers.filter(consumer => consumer.id != this.currId);
-            } else{
+            } else {
                 fetch('http://localhost:3000' + window.location.pathname, {
                     method: 'POST',
                     headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
                     body: JSON.stringify(dados)
                 })
             }
-            this.formCadastro.reset()
-            this.interesses = []
+
             this.consumers.push(dados);
+            
+            this.plantas = []
+            this.formCadastro.reset()
         }
     }
-    
+
     inicializarFormulario() {
         this.formCadastro = this.formBuilder.group({
-            nome: [''],
-            bairro: [''],
-            interesses: ['']
+            data: [''],
+            encarregado: [''],
+            plantas: ['']
         })
     }
-    
-    insertInteresse(){
-        this.interesses.push(this.formCadastro.value.interesses);
+
+    insertPlantas() {
+        this.plantas.push(this.formCadastro.value.plantas);
     }
 
     delete(id: number) {
@@ -87,7 +91,7 @@ export class ConsumidorComponent implements OnInit {
                 id: id
             })
         })
-        
+
         this.consumers = this.consumers.filter(consumer => consumer.id != id);
     }
 }
