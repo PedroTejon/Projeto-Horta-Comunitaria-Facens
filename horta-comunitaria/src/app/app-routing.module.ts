@@ -12,8 +12,11 @@ import { DistribuicaoComponent } from './cadastros/distribuicao/distribuicao.com
 import { ConsultaDeTarefasComponent } from './consultas/consulta-de-tarefas/consulta-de-tarefas.component';
 
 const routes: Routes = [
-  { path: '',
-    component: ConsumidorComponent },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'consulta-de-tarefas'
+  },
   {
     path: 'consumidores',
     component: ConsumidorComponent,
