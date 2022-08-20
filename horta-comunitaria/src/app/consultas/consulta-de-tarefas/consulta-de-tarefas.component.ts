@@ -12,8 +12,6 @@ export class ConsultaDeTarefasComponent implements OnInit {
 
     formCadastro!: FormGroup;
     tarefas: any[] = [];
-    tarefasSorted: any[] = [];
-    sorted = false;
 
     ngOnInit(): void {
         this.inicializarFormulario()
@@ -39,13 +37,10 @@ export class ConsultaDeTarefasComponent implements OnInit {
             }).then(response => response.json())
             .then((data) => {
                 this.tarefas = data
+                this.tarefas.sort((a, b) => { return (a.Tipo.toUpperCase() > b.Tipo.toUpperCase()) ? 1 : ((b.Tipo.toUpperCase() > a.Tipo.toUpperCase()) ? -1 : 0) })
             })
-            this.tarefasSorted = this.tarefas.sort((a, b) => { return (a.Tipo.toUpperCase() > b.Tipo.toUpperCase()) ? 1 : ((b.Tipo.toUpperCase() > a.Tipo.toUpperCase()) ? -1 : 0) })
+            
             this.formCadastro.reset();
         }
-    }
-    
-    sortByAlpha(){
-        this.sorted = !this.sorted;
     }
 }

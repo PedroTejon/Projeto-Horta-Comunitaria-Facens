@@ -18,28 +18,15 @@
     </form>
     
     <div id="tableView">
-        <div id="listingFunctions">
-            <button class="iconButton" (click)="sortByAlpha()"><mat-icon fontIcon="sort_by_alpha"></mat-icon></button>
-        </div>
+
         
-        <div id="table">
-            <div *ngIf="!sorted" style="width:98%; height:100%">
-                <div class="card" *ngFor="let tarefa of tarefas">
-                    <div class="cardContent">
-                        <p class="cardTitle">{{tarefa.Tipo}}</p>
-                        <p class="cardDescription">{{tarefa.planta}}</p>
-                    </div>
-                    <p class="cardTime">{{tarefa.data}}</p>
+        <div id="table" style="height:100%">
+            <div class="card" *ngFor="let tarefa of tarefas">
+                <div class="cardContent">
+                    <p class="cardTitle">{{tarefa.Tipo}}</p>
+                    <p class="cardDescription">{{tarefa.planta}}</p>
                 </div>
-            </div>
-            <div *ngIf="sorted" style="width:98%; height:100%">
-                <div class="card" *ngFor="let tarefa of tarefasSorted">
-                    <div class="cardContent">
-                        <p class="cardTitle">{{tarefa.Tipo}}</p>
-                        <p class="cardDescription">{{tarefa.planta}}</p>
-                    </div>
-                    <p class="cardTime">{{tarefa.data}}</p>
-                </div>
+                <p class="cardTime">{{tarefa.data}}</p>
             </div>
         </div>
     </div>

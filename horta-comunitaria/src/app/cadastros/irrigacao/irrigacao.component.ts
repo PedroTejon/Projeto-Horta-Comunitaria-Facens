@@ -16,7 +16,6 @@ export class IrrigacaoComponent implements OnInit {
 
     formCadastro!: FormGroup;
     consumers: any[] = [];
-    consumersSorted: any[] = [];
     sorted = false;
     editando = false;
     currId: any;
@@ -24,8 +23,11 @@ export class IrrigacaoComponent implements OnInit {
     ngOnInit(): void {
         fetch("http://localhost:3000" + window.location.pathname)
             .then(response => response.json())
-            .then((data) => { this.consumers = data });
-
+            .then((data) => { this.consumers = data; 
+                this.consumers = this.sorted ? 
+                this.consumers.sort((a, b) => { return (a.planta.toUpperCase() > b.planta.toUpperCase()) ? 1 : ((b.planta.toUpperCase() > a.planta.toUpperCase()) ? -1 : 0) }) :
+                this.consumers.sort((a, b) => { return a.id - b.id }) });
+            
         this.inicializarFormulario()
     }
 
@@ -63,14 +65,19 @@ export class IrrigacaoComponent implements OnInit {
                 })
             }
 
+            this.consumers = this.sorted ? 
+                this.consumers.sort((a, b) => { return (a.planta.toUpperCase() > b.planta.toUpperCase()) ? 1 : ((b.planta.toUpperCase() > a.planta.toUpperCase()) ? -1 : 0) }) :
+                this.consumers.sort((a, b) => { return a.id - b.id })
             this.consumers.push(dados);
-            this.consumersSorted = this.consumers.sort((a, b) => { return (a.planta.toUpperCase() > b.planta.toUpperCase()) ? 1 : ((b.planta.toUpperCase() > a.planta.toUpperCase()) ? -1 : 0) })
             this.formCadastro.reset();
         }
     }
     
     sortByAlpha(){
         this.sorted = !this.sorted;
+        this.sorted ?
+            this.consumers.sort((a, b) => { return (a.planta.toUpperCase() > b.planta.toUpperCase()) ? 1 : ((b.planta.toUpperCase() > a.planta.toUpperCase()) ? -1 : 0) }) :
+            this.consumers.sort((a, b) => { return a.id - b.id })
     }
 
 

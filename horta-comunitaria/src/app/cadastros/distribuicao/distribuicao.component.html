@@ -29,7 +29,7 @@
     
     <div id="tableView">
         <div id="listingFunctions">
-            <button class="iconButton" (click)="sortByAlpha()"><mat-icon fontIcon="sort_by_alpha"></mat-icon></button>
+            <button class="iconButton" (click)="sortByAlpha()"><mat-icon fontIcon="sort_by_alpha" [ngStyle]="{'color': (!sorted) ? 'white' : '#BB86FC'}"></mat-icon></button>
         </div>
         
         <div id="table">
@@ -40,23 +40,12 @@
                 <div class="tableCellButton"></div>
                 <div class="tableCellButton"></div>
             </div>
-            <div *ngIf="!sorted" style="height: 100%; width:100%">
-                <div *ngFor="let consumer of consumers" style="height: 20%" class="tableRow">
-                    <div class="tableCell">{{consumer.data}}</div>
-                    <div class="tableCell">{{consumer.planta}}</div>
-                    <div class="tableCell">{{consumer.local}}</div>
-                    <div class="tableCellButton"><button (click)="edit(consumer.id)" class="iconButton"><mat-icon fontIcon="edit" style="font-size: 26px !important"></mat-icon></button></div>
-                    <div class="tableCellButton"><button (click)="delete(consumer.id)" class="iconButton"><mat-icon fontIcon="delete" style="font-size: 26px !important"></mat-icon></button></div>
-                </div>
-            </div>
-            <div *ngIf="sorted" style="height: 100%; width:100%">
-                <div *ngFor="let consumer of consumersSorted" style="height: 20%" class="tableRow">
-                    <div class="tableCell">{{consumer.data}}</div>
-                    <div class="tableCell">{{consumer.planta}}</div>
-                    <div class="tableCell">{{consumer.local}}</div>
-                    <div class="tableCellButton"><button (click)="edit(consumer.id)" class="iconButton"><mat-icon fontIcon="edit" style="font-size: 26px !important"></mat-icon></button></div>
-                    <div class="tableCellButton"><button (click)="delete(consumer.id)" class="iconButton"><mat-icon fontIcon="delete" style="font-size: 26px !important"></mat-icon></button></div>
-                </div>
+            <div *ngFor="let consumer of consumers" style="height: 20%" class="tableRow">
+                <div class="tableCell">{{consumer.data}}</div>
+                <div class="tableCell">{{consumer.planta}}</div>
+                <div class="tableCell">{{consumer.local}}</div>
+                <div class="tableCellButton"><button (click)="edit(consumer.id)" class="iconButton"><mat-icon fontIcon="edit" style="font-size: 26px !important"></mat-icon></button></div>
+                <div class="tableCellButton"><button (click)="delete(consumer.id)" class="iconButton"><mat-icon fontIcon="delete" style="font-size: 26px !important"></mat-icon></button></div>
             </div>
         </div>
     </div>
