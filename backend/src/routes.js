@@ -6,6 +6,7 @@ import { createTablePlantas, createPlanta, selectPlantas, updatePlanta, deletePl
 import { createTableIrrigacao, createIrrigacao, selectIrrigacoes, updateIrrigacao, deleteIrrigacao } from './controller/irrigacao.js'
 import { createTableColheita, createColheita, selectColheitas, updateColheita, deleteColheita } from './controller/colheita.js'
 import { createTableDistribuicao, createDistribuicao, selectDistribuicoes, updateDistribuicao, deleteDistribuicao } from './controller/distribuicoes.js'
+import { consultaTarefas } from './controller/consultas.js'
 
 const router = Router();
 
@@ -53,5 +54,7 @@ router.post('/distribuicoes', createDistribuicao);
 router.get('/distribuicoes', selectDistribuicoes);
 router.put('/distribuicoes', updateDistribuicao);
 router.delete('/distribuicoes', deleteDistribuicao);
+
+router.post('/consulta', consultaTarefas);
 
 export default router;

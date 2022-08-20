@@ -17,6 +17,8 @@ export class ConsumidorComponent implements OnInit {
     formCadastro!: FormGroup;
     consumers: any[] = [];
     interesses: any[] = [];
+    consumersSorted: any[] = [];
+    sorted = false;
     editando = false;
     currId: any;
 
@@ -61,10 +63,16 @@ export class ConsumidorComponent implements OnInit {
                     body: JSON.stringify(dados)
                 })
             }
-            this.formCadastro.reset()
+
             this.interesses = []
             this.consumers.push(dados);
+            this.consumersSorted = this.consumers.sort((a, b) => { return (a.nome.toUpperCase() > b.nome.toUpperCase()) ? 1 : ((b.nome.toUpperCase() > a.nome.toUpperCase()) ? -1 : 0) })
+            this.formCadastro.reset();
         }
+    }
+    
+    sortByAlpha(){
+        this.sorted = !this.sorted;
     }
 
     inicializarFormulario() {

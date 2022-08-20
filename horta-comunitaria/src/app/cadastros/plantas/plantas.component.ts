@@ -14,6 +14,8 @@ export class PlantasComponent implements OnInit {
 
     formCadastro!: FormGroup;
     consumers: any[] = [];
+    consumersSorted: any[] = [];
+    sorted = false;
     editando = false;
     currId: any;
 
@@ -57,9 +59,15 @@ export class PlantasComponent implements OnInit {
                     body: JSON.stringify(dados)
                 })
             }
-            this.formCadastro.reset()
+            
             this.consumers.push(dados);
+            this.consumersSorted = this.consumers.sort((a, b) => { return (a.planta.toUpperCase() > b.planta.toUpperCase()) ? 1 : ((b.planta.toUpperCase() > a.planta.toUpperCase()) ? -1 : 0) })
+            this.formCadastro.reset();
         }
+    }
+    
+    sortByAlpha(){
+        this.sorted = !this.sorted;
     }
 
     inicializarFormulario() {

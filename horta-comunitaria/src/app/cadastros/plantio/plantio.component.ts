@@ -16,7 +16,9 @@ export class PlantioComponent implements OnInit {
 
     formCadastro!: FormGroup;
     consumers: any[] = [];
+    consumersSorted: any[] = [];
     editando = false;
+    sorted = false;
     currId: any;
 
     ngOnInit(): void {
@@ -66,8 +68,13 @@ export class PlantioComponent implements OnInit {
 
             this.consumers.push(dados);
 
-            this.formCadastro.reset()
+            this.consumersSorted = this.consumers.sort((a, b) => { return (a.planta.toUpperCase() > b.planta.toUpperCase()) ? 1 : ((b.planta.toUpperCase() > a.planta.toUpperCase()) ? -1 : 0) })
+            this.formCadastro.reset();
         }
+    }
+    
+    sortByAlpha(){
+        this.sorted = !this.sorted;
     }
 
     inicializarFormulario() {

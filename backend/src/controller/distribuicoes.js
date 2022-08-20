@@ -2,14 +2,14 @@ import { openDb } from '../configDB.js';
 
 export async function createTableDistribuicao() {
     openDb().then(db => {
-        db.exec('CREATE TABLE IF NOT EXISTS distribuicoes ( id INTEGER PRIMARY KEY, data TEXT, local TEXT, plantas TEXT)');
+        db.exec('CREATE TABLE IF NOT EXISTS distribuicoes ( id INTEGER PRIMARY KEY, data TEXT, local TEXT, planta TEXT)');
     });
 }
 
 export async function createDistribuicao(req, res) {
     let distribuicao = req.body;
     openDb().then(db => {
-        db.run('INSERT INTO distribuicoes ( data, local, plantas ) VALUES (?, ?, ?)', [distribuicao.data, distribuicao.local, distribuicao.plantas])
+        db.run('INSERT INTO distribuicoes ( data, local, planta ) VALUES (?, ?, ?)', [distribuicao.data, distribuicao.local, distribuicao.planta])
             .then(() => res.send({ "status": 200 }));
     });
 }
@@ -31,6 +31,6 @@ export async function deleteDistribuicao(req, res) {
 export async function updateDistribuicao(req, res) {
     let distribuicao = req.body;
     openDb().then(db => {
-        db.run('UPDATE distribuicoes SET data=?, local=?, plantas=? WHERE id=?', [distribuicao.data, distribuicao.local, distribuicao.plantas, distribuicao.id]).then(() => res.send({ "status": 200 }));
+        db.run('UPDATE distribuicoes SET data=?, local=?, planta=? WHERE id=?', [distribuicao.data, distribuicao.local, distribuicao.planta, distribuicao.id]).then(() => res.send({ "status": 200 }));
     });
 }
