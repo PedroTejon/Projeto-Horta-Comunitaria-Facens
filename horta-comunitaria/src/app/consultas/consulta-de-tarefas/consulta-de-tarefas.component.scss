@@ -1,0 +1,18 @@
+#form{
+    height: 15%
+}
+
+.form-row{
+    height: 85%;
+    width: 100%;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+}
+
+#tableView {
+    height: 70%;
+}

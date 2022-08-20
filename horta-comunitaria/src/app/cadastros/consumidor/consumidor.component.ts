@@ -24,13 +24,13 @@ export class ConsumidorComponent implements OnInit {
         fetch("http://localhost:3000" + window.location.pathname)
             .then(response => response.json())
             .then((data) => { this.consumers = data });
-            
+
         this.inicializarFormulario()
     }
 
     edit(id: number) {
         let consumer = this.consumers.find(c => c.id == id);
-        
+
         this.formCadastro.patchValue({
             nome: consumer.nome,
             bairro: consumer.bairro
@@ -40,12 +40,12 @@ export class ConsumidorComponent implements OnInit {
         this.currId = id;
     }
 
-    cadastrar(){
+    cadastrar() {
         if (this.formCadastro.valid) {
             let dados = this.formCadastro.value;
             dados.interesses = this.interesses.join(', ');
 
-            if (this.editando){
+            if (this.editando) {
                 dados.id = this.currId;
                 fetch('http://localhost:3000' + window.location.pathname, {
                     method: 'PUT',
@@ -54,7 +54,7 @@ export class ConsumidorComponent implements OnInit {
                 })
                 this.editando = false;
                 this.consumers = this.consumers.filter(consumer => consumer.id != this.currId);
-            } else{
+            } else {
                 fetch('http://localhost:3000' + window.location.pathname, {
                     method: 'POST',
                     headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
@@ -66,7 +66,7 @@ export class ConsumidorComponent implements OnInit {
             this.consumers.push(dados);
         }
     }
-    
+
     inicializarFormulario() {
         this.formCadastro = this.formBuilder.group({
             nome: [''],
@@ -74,8 +74,8 @@ export class ConsumidorComponent implements OnInit {
             interesses: ['']
         })
     }
-    
-    insertInteresse(){
+
+    insertInteresse() {
         this.interesses.push(this.formCadastro.value.interesses);
     }
 
@@ -87,7 +87,7 @@ export class ConsumidorComponent implements OnInit {
                 id: id
             })
         })
-        
+
         this.consumers = this.consumers.filter(consumer => consumer.id != id);
     }
 }

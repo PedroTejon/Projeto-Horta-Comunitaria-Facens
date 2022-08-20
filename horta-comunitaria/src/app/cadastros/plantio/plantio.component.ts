@@ -16,7 +16,6 @@ export class PlantioComponent implements OnInit {
 
     formCadastro!: FormGroup;
     consumers: any[] = [];
-    plantas: any[] = [];
     editando = false;
     currId: any;
 
@@ -30,12 +29,14 @@ export class PlantioComponent implements OnInit {
 
     edit(id: number) {
         let consumer = this.consumers.find(c => c.id == id);
-
+        let dateF = consumer.data.split('/')
+        let data = dateF[2] + '-' + dateF[1] + '-' + dateF[0];
+        
         this.formCadastro.patchValue({
-            data: consumer.data,
-            encarregado: consumer.encarregado
+            data: data,
+            encarregado: consumer.encarregado,
+            planta: consumer.planta
         });
-        this.plantas = consumer.plantas.split(', ');
         this.editando = true;
         this.currId = id;
     }
@@ -45,7 +46,6 @@ export class PlantioComponent implements OnInit {
             let dados = this.formCadastro.value;
             let dateF = this.formCadastro.value.data.split('-')
             dados.data = dateF[2] + '/' + dateF[1] + '/' + dateF[0];
-            dados.plantas = this.plantas.join(', ');
 
             if (this.editando) {
                 dados.id = this.currId;
@@ -65,8 +65,7 @@ export class PlantioComponent implements OnInit {
             }
 
             this.consumers.push(dados);
-            
-            this.plantas = []
+
             this.formCadastro.reset()
         }
     }
@@ -75,12 +74,8 @@ export class PlantioComponent implements OnInit {
         this.formCadastro = this.formBuilder.group({
             data: [''],
             encarregado: [''],
-            plantas: ['']
+            planta: ['']
         })
-    }
-
-    insertPlantas() {
-        this.plantas.push(this.formCadastro.value.plantas);
     }
 
     delete(id: number) {

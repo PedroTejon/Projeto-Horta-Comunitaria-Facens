@@ -1,0 +1,36 @@
+<section id="cadastro">
+    <h2 id="titulo">Cadastro de Colaborador</h2>
+    
+    <form id="form" [formGroup]="formCadastro" (ngSubmit)="pesquisar()">
+        <div class="form-row">
+            <div class="form-field">
+                <label for="data">Data</label>
+                <input type="date" formControlName="data" required>
+            </div>
+            <div class="form-field">
+                <label for="encarregado">Nome</label>
+                <input type="text" formControlName="encarregado" required>
+            </div>
+            <div class="button-field">
+                <input type="submit" value="Cadastrar">
+            </div>
+        </div>
+    </form>
+    
+    <div id="tableView">
+        <div id="listingFunctions">
+            <button class="iconButton"><mat-icon fontIcon="filter_alt"></mat-icon></button>
+            <button class="iconButton"><mat-icon fontIcon="sort_by_alpha"></mat-icon></button>
+        </div>
+        
+        <div id="table">
+            <div class="card" *ngFor="let tarefa of tarefas">
+                <div class="cardContent">
+                    <p class="cardTitle">{{tarefa.Tipo}}</p>
+                    <p class="cardDescription">{{tarefa.planta}}</p>
+                </div>
+                <p class="cardTime">{{tarefa.data}}</p>
+            </div>
+        </div>
+    </div>
+</section>

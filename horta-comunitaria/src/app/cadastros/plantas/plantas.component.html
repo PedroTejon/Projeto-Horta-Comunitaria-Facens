@@ -45,7 +45,7 @@
                 <div class="tableCellButton"></div>
             </div>
 
-            <div *ngFor="let consumer of consumers" style="width: auto; height: 20%" class="tableRow">
+            <div *ngFor="let consumer of consumers" style="height: 20%" class="tableRow">
                 <div class="tableCell">{{consumer.nome}}</div>
                 <div class="tableCell">{{consumer.categoria}}</div>
                 <div class="tableCellButton"><button (click)="edit(consumer.id)" class="iconButton"><mat-icon fontIcon="edit" style="font-size: 26px !important"></mat-icon></button></div>

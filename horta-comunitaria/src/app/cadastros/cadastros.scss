@@ -1,10 +1,10 @@
 #cadastro {
     width: 66vw;
     height: 90vh;
-    
+
     display: flex;
     flex-direction: column;
-    
+
     padding: 0 3vw;
 }
 
@@ -17,24 +17,24 @@
 #form {
     height: 25%;
     width: 90%;
-    
+
     display: flex;
     flex-direction: column;
     gap: 2vh;
-    
+
     margin-bottom: 3vh;
     padding: 1vw;
-    
+
     background-color: #1D1D1D;
-    
+
     border: 1px white solid;
     border-radius: 5px;
 }
 
-.form-row{
+.form-row {
     height: 45%;
     width: 100%;
-    
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -44,83 +44,86 @@
 
 .form-field {
     height: 100%;
-    
+
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     justify-content: center;
-    
+
     padding-left: 1vw;
-    
+
     color: white;
-    
+
     background-color: #2C2C2C;
-    
+
     border-bottom: 1px solid #BB86FC;
     border-radius: 5px;
-    
-    &>input[type=text], input[type=date], input[type=time], input[name=interesses] {
+
+    &>input[type=text],
+    input[type=date],
+    input[type=time],
+    input[name=interesses] {
         height: 41%;
         width: 95%;
-        
+
         padding-left: 1%;
-        
+
         color: white;
         font-size: 14px;
-        
+
         background-color: #373737;
-        
+
         border-radius: 5px;
         border: 0;
     }
-    
+
     &>div>input[type=text] {
         height: 100%;
         width: 85%;
-        
+
         padding-left: 1%;
-        
+
         color: white;
         font-size: 14px;
-        
+
         background-color: #373737;
-        
+
         border-radius: 5px;
         border: 0;
     }
-    
+
     &>input[type=time] {
         width: 88%;
-        
+
         text-align: center;
     }
-    
-    &>div>select{
+
+    &>div>select {
         width: 95%;
         height: 100%;
 
         padding-left: 1%;
-        
+
         color: white;
         font-size: 14px;
-        
+
         background-color: #373737;
-        
+
         border-radius: 5px;
         border: 0;
     }
-    
+
     &>div>input[type=button] {
         height: 100%;
         width: 8%;
-        
+
         margin-left: 1vw;
-        
+
         color: white;
         font-size: 14px;
-        
+
         background-color: #BB86FC;
-        
+
         border-radius: 5px;
         border: 0;
     }
@@ -129,35 +132,36 @@
 #text-field {
     height: auto;
     padding-top: 1vh;
-    
+
     overflow: auto;
 }
 
 .button-field {
     height: 100%;
     width: 33%;
-    
+
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 1vw;
-    
-    &>input[type=button], input[type=submit] {
+
+    &>input[type=button],
+    input[type=submit] {
         height: 70%;
         width: 100%;
-        
+
         color: white;
         font-size: 14px;
-        
+
         border-radius: 5px;
         border: 0;
     }
-    
+
     &>input[type=submit] {
         background-color: #BB86FC;
     }
-    
+
     &>input[type=button] {
         background-color: #373737;
     }
@@ -166,76 +170,82 @@
 #tableView {
     height: 50%;
     width: 90%;
-    
+
     display: flex;
     flex-direction: column;
     gap: 2vh;
-    
+
     padding: 1vw;
-    
+
     background-color: #1D1D1D;
-    
+
     border-radius: 5px;
 }
 
-#listingFunctions{
+#listingFunctions {
     width: 100%;
-    
+
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     gap: 1vw;
-    
-    
+
+
 }
 
-.iconButton{
+.iconButton {
     color: white;
-        
+
     font-size: 14px;
-    
+
     background-color: transparent;
-    
+
     border-radius: 5px;
     border: 0;
-    
+
     cursor: pointer;
 }
 
 
-#table{
+#table {
     height: 90%;
     width: 100%;
-    
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: #242424;
+
     border: 1px solid white;
     border-radius: 5px;
-    
+
     overflow-x: auto;
 }
 
 #tableHeaderRow {
     height: 16%;
     width: 100%;
-    
+
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     justify-content: space-between;
     gap: 1vw;
-    
+
     border-bottom: 1px solid white;
 }
 
 .tableRow {
     height: 20%;
     width: 100%;
-    
+
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     justify-content: space-between;
     gap: 1vw;
-    
+
     border-bottom: 1px solid white;
 }
 
@@ -250,34 +260,67 @@
 .tableCell {
     width: 25%;
     height: 8vh;
-    
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: end;
     flex-grow: 1;
-    
+
     padding-left: 1%;
     padding-bottom: 1%;
-    
+
     color: white;
     font-size: 16px;
-    
+
     white-space: nowrap;
     overflow: auto;
 }
 
-.tableCellButton{
+.tableCellButton {
     height: 100%;
     width: 4vw;
-    
+
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     border-left: 1px solid white;
 }
 
 .tableCell:not(:first-child) {
     border-left: 1px solid white;
+}
+
+.card {
+    height: 18%;
+    width: 98%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 1.2vh;
+    padding-bottom: 1.2vh;
+
+    color: white;
+
+    background-color: #2C2C2C;
+
+    border-radius: 5px;
+}
+
+.cardContent {
+    height: 60%;
+    
+    margin-left: 1vw;
+}
+
+.cardTitle, .cardTime {
+    font-size: 24px;
+}
+
+.cardTime {
+    margin-right: 1vw;
 }

@@ -9,6 +9,7 @@ import { PlantasComponent } from './cadastros/plantas/plantas.component';
 import { IrrigacaoComponent } from './cadastros/irrigacao/irrigacao.component';
 import { ColheitaComponent } from './cadastros/colheita/colheita.component';
 import { DistribuicaoComponent } from './cadastros/distribuicao/distribuicao.component';
+import { ConsultaDeTarefasComponent } from './consultas/consulta-de-tarefas/consulta-de-tarefas.component';
 
 const routes: Routes = [
   { path: '',
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path: 'distribuicoes',
     component: DistribuicaoComponent,
+  },
+  {
+    path: 'consulta-de-tarefas',
+    component: ConsultaDeTarefasComponent,
   }
 ];
 
