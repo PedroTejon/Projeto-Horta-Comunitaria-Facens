@@ -1,5 +1,5 @@
 <section id="cadastro">
-    <h2 id="titulo">Cadastro de Colaborador</h2>
+    <h2 id="titulo">Consulta de Tarefas</h2>
     
     <form id="form" [formGroup]="formCadastro" (ngSubmit)="pesquisar()">
         <div class="form-row">
@@ -18,7 +18,6 @@
     </form>
     
     <div id="tableView">
-
         
         <div id="table" style="height:100%">
             <div class="card" *ngFor="let tarefa of tarefas">
