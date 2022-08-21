@@ -14,7 +14,7 @@ Projeto feito como solução do desafio pós curso de férias Facens, onde se er
 
 ### Tecnologias utilizadas
 + HTML(HyperText Markup Language)
-+ CSS(Cascading Style Sheets)
++ SCSS
 + Javascript
 + Typescript
 + SQLite
